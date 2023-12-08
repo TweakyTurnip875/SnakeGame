@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		Pane pane = new Pane();
 		
-		Scene scene = new Scene(pane, 300, 300);
+		Scene scene = new Scene(pane, 400, 300);
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
