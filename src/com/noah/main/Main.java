@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
-		Pane pane = new Pane();
+		GridPane board = new GridPane();
 		
-		Scene scene = new Scene(pane, 400, 300);
+		Scene scene = new Scene(board, 400, 300);
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
