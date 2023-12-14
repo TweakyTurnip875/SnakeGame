@@ -1,6 +1,8 @@
 package com.noah.main;
 
-public class Cell {
+import javafx.scene.layout.*;
+
+public class Cell extends Pane {
 	private int column, row;
 	private CellType cellType;
 	
