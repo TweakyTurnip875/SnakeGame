@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 
 public class Main extends Application {
+	Cell[][] cell = new Cell[10][10];
+	
 	@Override
 	public void start(Stage stage) {
 		GridPane board = new GridPane();
