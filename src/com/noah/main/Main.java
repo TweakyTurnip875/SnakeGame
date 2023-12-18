@@ -5,6 +5,8 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class Main extends Application {
 	Cell[][] cell = new Cell[10][10];
@@ -17,7 +19,6 @@ public class Main extends Application {
 			for(int j = 0; j < 10; j++) {
 				board.add(cell[i][j] = new Cell(i, j), i, j);
 				cell[i][j].setCellType(CellType.EMPTY);
-				cell[i][j].setStyle("-fx-border-color: black;");
 			}
 		}
 		

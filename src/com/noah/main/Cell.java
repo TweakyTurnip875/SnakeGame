@@ -8,6 +8,7 @@ public class Cell extends Pane {
 	
 	public Cell(int column, int row) {
 		this.setPrefSize(2000, 2000);
+		this.setStyle("-fx-border-color: black;");
 		this.column = column;
 		this.row = row;
 		
