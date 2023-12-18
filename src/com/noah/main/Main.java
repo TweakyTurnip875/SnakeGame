@@ -1,6 +1,7 @@
 package com.noah.main;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,6 +12,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		GridPane board = new GridPane();
+		
+		for(int i = 0; i < 10; i++) {
+			for(int j = 0; j < 10; j++) {
+				board.add(cell[i][j] = new Cell(i, j), i, j);
+				cell[i][j].setStyle("-fx-border-color: black;");
+			}
+		}
 		
 		Scene scene = new Scene(board, 400, 300);
 		
