@@ -21,7 +21,10 @@ public class Main extends Application {
 			}
 		}
 		
-		Scene scene = new Scene(board, 400, 300);
+		BorderPane pane = new BorderPane();
+		pane.setCenter(board);
+		
+		Scene scene = new Scene(pane, 400, 300);
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
