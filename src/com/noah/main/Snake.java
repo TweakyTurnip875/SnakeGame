@@ -22,4 +22,10 @@ public class Snake {
 		head.setCellType(CellType.SNAKE_NODE);
 		snake.addFirst(head);
 	}
+	public Cell getHead() {
+		return head;
+	}
+	public LinkedList<Cell> getSnake() {
+		return snake;
+	}
 }
