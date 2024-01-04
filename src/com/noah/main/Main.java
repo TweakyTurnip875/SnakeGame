@@ -22,6 +22,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage stage) {
+		setDirection(DIRECTION_RIGHT);
 		GridPane board = new GridPane();
 		
 		for(int i = 0; i < 10; i++) {
@@ -32,6 +33,7 @@ public class Main extends Application {
 		}
 		snake = new Snake(cells[5][5]);
 		cells[5][5].setCellType(CellType.SNAKE_NODE);
+		snake.getHead().setStyle("-fx-background-color: black;");
 		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(board);
@@ -50,7 +52,9 @@ public class Main extends Application {
 	}
 	public void update() {
 		if(direction != DIRECTION_NONE) {
+			snake.getHead().setStyle("-fx-background-color: white;");
 			Cell nextCell = getNextCell(snake.getHead());
+			snake.move(nextCell);
 		}
 	}
 	public Cell getNextCell(Cell currentLocation) {
