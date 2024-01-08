@@ -1,6 +1,7 @@
 package com.noah.main;
 
 import javafx.application.Application;
+import java.util.concurrent.*; 
 import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -8,9 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class Main extends Application implements Runnable{
+public class Main extends Application {
 	private boolean isRunning = true;
 	private float interval = 400.0f;
+	private boolean isFood = false;
 	private Snake snake;
 	Cell[][] cells = new Cell[10][10];
 	private static final int 
@@ -36,7 +38,8 @@ public class Main extends Application implements Runnable{
 		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(board);
-		new Thread(this).start();
+
+		updateThread.start();
 		
 		Scene scene = new Scene(pane, 400, 300);
 		
@@ -56,21 +59,21 @@ public class Main extends Application implements Runnable{
 		stage.setScene(scene);
 		stage.show();
 	}
-	@Override
-	public void run() {
+	Thread updateThread = new Thread(() -> {
 		while(isRunning) {
 			float time = System.currentTimeMillis();
 			update();
-			
+				
 			time = System.currentTimeMillis() - time;
-			
+				
 			if(time < interval) {
 				try {
 					Thread.sleep((long)(interval - time));
 				} catch(InterruptedException ex) {}
-			}
+			}	
 		}
-	}
+	});
+
 	public int getDirection() {
 		return direction;
 	}
@@ -80,7 +83,19 @@ public class Main extends Application implements Runnable{
 	public void update() {
 		if(direction != DIRECTION_NONE) {
 			Cell nextCell = getNextCell(snake.getHead());
+			
+			if(nextCell.getCellType() == CellType.FOOD) {
+				snake.grow();
+				isFood = false;
+			}
 			snake.move(nextCell);
+		}
+		int row = (int)(Math.random() * 9);
+		int col = (int)(Math.random() * 9);
+
+		if(!isFood && cells[col][row].getCellType() == CellType.EMPTY) {
+			cells[col][row].setCellType(CellType.FOOD);
+			isFood = true;
 		}
 	}
 	public Cell getNextCell(Cell currentLocation) {

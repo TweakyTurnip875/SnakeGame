@@ -7,6 +7,7 @@ public class Cell extends Pane {
 	private CellType cellType;
 	private String styleSnakeNode = "-fx-background-color: black;";
 	private String styleEmptyNode = "-fx-background-color: white; -fx-border-color:black;";
+	private String styleFoodNode = "-fx-background-color: red;";
 	
 	public Cell(int column, int row) {
 		this.setPrefSize(2000, 2000);
@@ -20,6 +21,8 @@ public class Cell extends Pane {
 			this.setStyle(styleEmptyNode);
 		} else if(cellType == CellType.SNAKE_NODE) {
 			this.setStyle(styleSnakeNode);
+		} else if(cellType == CellType.FOOD) {
+			this.setStyle(styleFoodNode);
 		}
 	}
 	public CellType getCellType() {
