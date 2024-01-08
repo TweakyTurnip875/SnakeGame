@@ -10,7 +10,7 @@ import javafx.scene.input.KeyEvent;
 
 public class Main extends Application implements Runnable{
 	private boolean isRunning = true;
-	private float interval = 1000.0f;
+	private float interval = 400.0f;
 	private Snake snake;
 	Cell[][] cells = new Cell[10][10];
 	private static final int 
