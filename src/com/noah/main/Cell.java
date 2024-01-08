@@ -1,13 +1,14 @@
 package com.noah.main;
 
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class Cell extends Pane {
 	private int column, row;
 	private CellType cellType;
 	private String styleSnakeNode = "-fx-background-color: #F5F5DC;";
 	private String styleEmptyNode = "-fx-background-color: #202121;";
-	private String styleFoodNode = "-fx-background-color: #a1b0c7;";
+	private String styleFoodNode = "-fx-background-color: #bc8f8f;";
 	
 	public Cell(int column, int row) {
 		this.setPrefSize(2000, 2000);
