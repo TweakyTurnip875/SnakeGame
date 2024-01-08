@@ -13,6 +13,7 @@ public class Snake {
 	}
 	public void grow() {
 		snake.add(head);
+		head.updateStyles();
 	}
 	public void move(Cell next) {
 		Cell tail = snake.removeLast();
@@ -21,6 +22,7 @@ public class Snake {
 		head = next;
 		head.setCellType(CellType.SNAKE_NODE);
 		snake.addFirst(head);
+		head.updateStyles();
 	}
 	public Cell getHead() {
 		return head;

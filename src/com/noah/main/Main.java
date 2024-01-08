@@ -33,9 +33,6 @@ public class Main extends Application implements Runnable{
 			}
 		}
 		snake = new Snake(cells[5][5]);
-		cells[5][5].setCellType(CellType.SNAKE_NODE);
-		snake.getHead().setStyle("-fx-background-color: black;");
-		
 		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(board);
@@ -53,8 +50,6 @@ public class Main extends Application implements Runnable{
 			} else if(e.getCode() == KeyCode.RIGHT) {
 				setDirection(DIRECTION_RIGHT);
 			}
-			
-			snake.getHead().setStyle("-fx-background-color: black;");
 		});
 		
 		stage.setTitle("Snake Game");
@@ -66,7 +61,6 @@ public class Main extends Application implements Runnable{
 		while(isRunning) {
 			float time = System.currentTimeMillis();
 			update();
-			snake.getHead().setStyle("-fx-background-color: black;");
 			
 			time = System.currentTimeMillis() - time;
 			
@@ -85,7 +79,6 @@ public class Main extends Application implements Runnable{
 	}
 	public void update() {
 		if(direction != DIRECTION_NONE) {
-			snake.getHead().setStyle("-fx-background-color: white; -fx-border-color:black;");
 			Cell nextCell = getNextCell(snake.getHead());
 			snake.move(nextCell);
 		}
