@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 public class Main extends Application {
 	private boolean isRunning = true;
-	private float interval = 200.0f;
+	private float interval = 100.0f;
 	private boolean isFood = false;
 	private Snake snake;
 	Cell[][] cells = new Cell[20][20];
@@ -53,7 +53,6 @@ public class Main extends Application {
 			} else if(e.getCode() == KeyCode.RIGHT) {
 				setDirection(DIRECTION_RIGHT);
 			}
-			System.out.println(direction);
 		});
 		
 		direction = DIRECTION_RIGHT;
