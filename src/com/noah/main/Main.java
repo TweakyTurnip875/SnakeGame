@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class Main extends Application {
+public class Main extends Application implements Runnable{
+	private boolean isRunning = true;
+	private float interval = 1000.0f;
 	private Snake snake;
 	Cell[][] cells = new Cell[10][10];
 	private static final int 
@@ -34,8 +36,10 @@ public class Main extends Application {
 		cells[5][5].setCellType(CellType.SNAKE_NODE);
 		snake.getHead().setStyle("-fx-background-color: black;");
 		
+		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(board);
+		new Thread(this).start();
 		
 		Scene scene = new Scene(pane, 400, 300);
 		
@@ -49,13 +53,29 @@ public class Main extends Application {
 			} else if(e.getCode() == KeyCode.RIGHT) {
 				setDirection(DIRECTION_RIGHT);
 			}
-			update();
+			
 			snake.getHead().setStyle("-fx-background-color: black;");
 		});
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
 		stage.show();
+	}
+	@Override
+	public void run() {
+		while(isRunning) {
+			float time = System.currentTimeMillis();
+			update();
+			snake.getHead().setStyle("-fx-background-color: black;");
+			
+			time = System.currentTimeMillis() - time;
+			
+			if(time < interval) {
+				try {
+					Thread.sleep((long)(interval - time));
+				} catch(InterruptedException ex) {}
+			}
+		}
 	}
 	public int getDirection() {
 		return direction;
