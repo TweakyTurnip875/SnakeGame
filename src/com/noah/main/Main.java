@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 
 public class Main extends Application {
 	private boolean isRunning = true;
-	private float interval = 400.0f;
+	private float interval = 200.0f;
 	private boolean isFood = false;
 	private Snake snake;
 	Cell[][] cells = new Cell[10][10];
@@ -87,7 +87,7 @@ public class Main extends Application {
 			if(nextCell.getCellType() == CellType.FOOD) {
 				snake.grow();
 				isFood = false;
-			}
+			} 
 			snake.move(nextCell);
 		}
 		int row = (int)(Math.random() * 9);
