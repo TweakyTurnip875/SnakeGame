@@ -8,12 +8,11 @@ public class Snake {
 	
 	public Snake(Cell startPosition) {
 		head = startPosition;
-		snake.add(head);
+		snake.addFirst(head);
 		head.setCellType(CellType.SNAKE_NODE);
 	}
 	public void grow() {
-		snake.add(head);
-		head.updateStyles();
+		snake.addFirst(head);
 	}
 	public void move(Cell next) {
 		Cell tail = snake.removeLast();
@@ -22,7 +21,6 @@ public class Snake {
 		head = next;
 		head.setCellType(CellType.SNAKE_NODE);
 		snake.addFirst(head);
-		head.updateStyles();
 	}
 	public Cell getHead() {
 		return head;
