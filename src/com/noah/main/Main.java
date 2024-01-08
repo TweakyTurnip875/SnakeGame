@@ -55,7 +55,7 @@ public class Main extends Application {
 			}
 		});
 		
-		direction = DIRECTION_RIGHT;
+		setDirection(DIRECTION_RIGHT);
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
@@ -96,8 +96,8 @@ public class Main extends Application {
 			}
 			snake.move(nextCell);
 		}
-		int row = (int)(Math.random() * 9);
-		int col = (int)(Math.random() * 9);
+		int row = (int)(Math.random() * 19);
+		int col = (int)(Math.random() * 19);
 
 		if(!isFood && cells[col][row].getCellType() == CellType.EMPTY) {
 			cells[col][row].setCellType(CellType.FOOD);
