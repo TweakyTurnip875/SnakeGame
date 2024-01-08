@@ -14,7 +14,7 @@ public class Main extends Application {
 	private float interval = 200.0f;
 	private boolean isFood = false;
 	private Snake snake;
-	Cell[][] cells = new Cell[10][10];
+	Cell[][] cells = new Cell[20][20];
 	private static final int 
 			DIRECTION_NONE = 0, 
 			DIRECTION_UP = 1, 
@@ -28,20 +28,20 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		GridPane board = new GridPane();
 		
-		for(int i = 0; i < 10; i++) {
-			for(int j = 0; j < 10; j++) {
+		for(int i = 0; i < 20; i++) {
+			for(int j = 0; j < 20; j++) {
 				board.add(cells[i][j] = new Cell(i, j), i, j);
 				cells[i][j].setCellType(CellType.EMPTY);
 			}
 		}
-		snake = new Snake(cells[5][5]);
+		snake = new Snake(cells[0][0]);
 		
 		BorderPane pane = new BorderPane();
 		pane.setCenter(board);
 
 		updateThread.start();
 		
-		Scene scene = new Scene(pane, 400, 300);
+		Scene scene = new Scene(pane, 400, 350);
 		
 		scene.setOnKeyPressed(e -> {
 			if(e.getCode() == KeyCode.UP) {
@@ -53,7 +53,10 @@ public class Main extends Application {
 			} else if(e.getCode() == KeyCode.RIGHT) {
 				setDirection(DIRECTION_RIGHT);
 			}
+			System.out.println(direction);
 		});
+		
+		direction = DIRECTION_RIGHT;
 		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
@@ -86,8 +89,12 @@ public class Main extends Application {
 			
 			if(nextCell.getCellType() == CellType.FOOD) {
 				snake.grow();
+				nextCell.setCellType(CellType.SNAKE_NODE);
 				isFood = false;
-			} 
+			} else if(nextCell.getCellType() == CellType.SNAKE_NODE) {
+				isRunning = false;
+				snake.getHead().setStyle("-fx-background-color:red;");
+			}
 			snake.move(nextCell);
 		}
 		int row = (int)(Math.random() * 9);
@@ -111,6 +118,7 @@ public class Main extends Application {
 		} else if(direction == DIRECTION_DOWN) {
 			row++;
 		}
+		
 		Cell nextCell = cells[col][row];
 		return nextCell;
 	}
