@@ -22,7 +22,6 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage stage) {
-		setDirection(DIRECTION_RIGHT);
 		GridPane board = new GridPane();
 		
 		for(int i = 0; i < 10; i++) {
@@ -40,6 +39,20 @@ public class Main extends Application {
 		
 		Scene scene = new Scene(pane, 400, 300);
 		
+		scene.setOnKeyPressed(e -> {
+			if(e.getCode() == KeyCode.UP) {
+				setDirection(DIRECTION_UP);
+			} else if(e.getCode() == KeyCode.DOWN) {
+				setDirection(DIRECTION_DOWN);
+			} else if(e.getCode() == KeyCode.LEFT) {
+				setDirection(DIRECTION_LEFT);
+			} else if(e.getCode() == KeyCode.RIGHT) {
+				setDirection(DIRECTION_RIGHT);
+			}
+			update();
+			snake.getHead().setStyle("-fx-background-color: black;");
+		});
+		
 		stage.setTitle("Snake Game");
 		stage.setScene(scene);
 		stage.show();
@@ -52,7 +65,7 @@ public class Main extends Application {
 	}
 	public void update() {
 		if(direction != DIRECTION_NONE) {
-			snake.getHead().setStyle("-fx-background-color: white;");
+			snake.getHead().setStyle("-fx-background-color: white; -fx-border-color:black;");
 			Cell nextCell = getNextCell(snake.getHead());
 			snake.move(nextCell);
 		}
@@ -70,7 +83,7 @@ public class Main extends Application {
 		} else if(direction == DIRECTION_DOWN) {
 			row++;
 		}
-		Cell nextCell = cells[row][col];
+		Cell nextCell = cells[col][row];
 		return nextCell;
 	}
 	public static void main(String[] args) {
