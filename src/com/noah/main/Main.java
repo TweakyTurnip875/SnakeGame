@@ -44,13 +44,13 @@ public class Main extends Application {
 		Scene scene = new Scene(pane, 400, 350);
 		
 		scene.setOnKeyPressed(e -> {
-			if(e.getCode() == KeyCode.UP) {
+			if(e.getCode() == KeyCode.UP && getDirection() != DIRECTION_DOWN) {
 				setDirection(DIRECTION_UP);
-			} else if(e.getCode() == KeyCode.DOWN) {
+			} else if(e.getCode() == KeyCode.DOWN && getDirection() != DIRECTION_UP) {
 				setDirection(DIRECTION_DOWN);
-			} else if(e.getCode() == KeyCode.LEFT) {
+			} else if(e.getCode() == KeyCode.LEFT && getDirection() != DIRECTION_RIGHT) {
 				setDirection(DIRECTION_LEFT);
-			} else if(e.getCode() == KeyCode.RIGHT) {
+			} else if(e.getCode() == KeyCode.RIGHT && getDirection() != DIRECTION_LEFT) {
 				setDirection(DIRECTION_RIGHT);
 			}
 		});
