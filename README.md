@@ -1,6 +1,6 @@
 <h1>SnakeGame</h1>
-<h2>Synopsis</h2>
-A snake game written in Java. The user plays as a snake that eats apples. The snake grows with the amount of apples it eats. The snake cannot crash into itself or a wall, otherwise as game over will occur.
+<h2>Synopsis and How To Play</h2>
+A snake game written in Java. The user plays as a snake that eats apples. The snake grows with the amount of apples it eats. The snake cannot crash into itself or a wall, otherwise as game over will occur. Use the arrow keys to control the snakes movements.
 <h2>Install Guide</h2>
 You will need the Java programming language (https://www.java.com/en/) installed and the JavaFX (https://openjfx.io/) library added to your build path.
 
