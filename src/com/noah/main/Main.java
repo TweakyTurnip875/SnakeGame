@@ -1,13 +1,10 @@
 package com.noah.main;
 
 import javafx.application.Application;
-import java.util.concurrent.*; 
-import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 public class Main extends Application {
 	private boolean isRunning = true;
